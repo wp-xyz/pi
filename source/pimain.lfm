@@ -1,0 +1,287 @@
+object MainForm: TMainForm
+  Left = 582
+  Height = 316
+  Top = 219
+  Width = 416
+  AutoSize = True
+  BorderStyle = bsSingle
+  Caption = 'Monte-Carlo Calculation of pi'
+  ClientHeight = 316
+  ClientWidth = 416
+  Color = clBtnFace
+  Font.Color = clWindowText
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '2.0.10.0'
+  object PaintBox1: TPaintBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 8
+    Height = 201
+    Top = 8
+    Width = 201
+    BorderSpacing.Left = 8
+    BorderSpacing.Top = 8
+    Constraints.MinHeight = 200
+    Constraints.MinWidth = 200
+    OnPaint = PaintBox1Paint
+  end
+  object TxtTime: TLabel
+    AnchorSideLeft.Control = Panel2
+    AnchorSideTop.Control = CbUpdate
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Panel2
+    AnchorSideRight.Side = asrBottom
+    Left = 217
+    Height = 15
+    Top = 238
+    Width = 161
+    Alignment = taCenter
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Top = 2
+    Caption = 'TxtTime'
+    ParentColor = False
+  end
+  object BtnExec: TButton
+    AnchorSideLeft.Control = CbUpdate
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Bevel1
+    AnchorSideBottom.Control = Panel1
+    AnchorSideBottom.Side = asrBottom
+    Left = 225
+    Height = 25
+    Top = 263
+    Width = 68
+    Anchors = [akLeft, akRight, akBottom]
+    AutoSize = True
+    BorderSpacing.Top = 6
+    Caption = 'Start'
+    OnClick = BtnExecClick
+    OnMouseDown = BtnExecMouseDown
+    TabOrder = 0
+  end
+  object Panel1: TPanel
+    AnchorSideLeft.Control = PaintBox1
+    AnchorSideTop.Control = PaintBox1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = PaintBox1
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Side = asrBottom
+    Left = 8
+    Height = 71
+    Top = 217
+    Width = 201
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = True
+    BorderSpacing.Top = 8
+    BorderSpacing.Bottom = 8
+    BevelInner = bvRaised
+    BevelOuter = bvLowered
+    ClientHeight = 71
+    ClientWidth = 201
+    TabOrder = 1
+    object TxtCount: TLabel
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Panel1
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      Left = 2
+      Height = 15
+      Top = 10
+      Width = 197
+      Alignment = taCenter
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 8
+      Caption = 'TxtCount'
+      ParentColor = False
+    end
+    object TxtHits: TLabel
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = TxtCount
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      Left = 2
+      Height = 13
+      Top = 27
+      Width = 197
+      Alignment = taCenter
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      BorderSpacing.Top = 2
+      Caption = 'TxtHits'
+      ParentColor = False
+    end
+    object TxtPi: TLabel
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = TxtHits
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      Left = 2
+      Height = 13
+      Top = 48
+      Width = 197
+      Alignment = taCenter
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      BorderSpacing.Top = 8
+      BorderSpacing.Bottom = 8
+      Caption = 'TxtPi'
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object BtnQuit: TButton
+    AnchorSideLeft.Control = Bevel1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = BtnExec
+    AnchorSideRight.Control = Panel2
+    AnchorSideRight.Side = asrBottom
+    Left = 301
+    Height = 25
+    Top = 263
+    Width = 77
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = True
+    BorderSpacing.Bottom = 8
+    Caption = 'Close'
+    OnClick = BtnQuitClick
+    TabOrder = 2
+  end
+  object CbUpdate: TCheckBox
+    AnchorSideLeft.Control = Panel2
+    AnchorSideTop.Control = Panel1
+    Left = 225
+    Height = 19
+    Top = 217
+    Width = 81
+    BorderSpacing.Left = 8
+    Caption = 'Live display'
+    Checked = True
+    State = cbChecked
+    TabOrder = 3
+  end
+  object Panel2: TPanel
+    AnchorSideLeft.Control = PaintBox1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = PaintBox1
+    AnchorSideBottom.Control = PaintBox1
+    AnchorSideBottom.Side = asrBottom
+    Left = 217
+    Height = 201
+    Top = 8
+    Width = 161
+    Anchors = [akTop, akLeft, akBottom]
+    BorderSpacing.Left = 8
+    BorderSpacing.Right = 8
+    BevelInner = bvRaised
+    BevelOuter = bvLowered
+    ClientHeight = 201
+    ClientWidth = 161
+    TabOrder = 4
+    object Image1: TImage
+      AnchorSideLeft.Control = Panel2
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Panel2
+      AnchorSideTop.Side = asrCenter
+      Left = 13
+      Height = 141
+      Top = 30
+      Width = 135
+      AutoSize = True
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B47726170686963D708000089504E47
+        0D0A1A0A0000000D49484452000000870000008D0802000000121EFE3B000000
+        097048597300000EC300000EC301C76FA864000008894944415478DAED9DC975
+        DC3A10453B0945E1209C8562E81C9C833350068E400168AFADB70AC021D0EFEB
+        7ED52983207BE20092AF163A148726810B14A6AAC2A9B3B4272767C145797979
+        F9F6EDDBE9747A7E7EFEF3E78FA9AC2FEFEFEFDFBF7F178C8F8F8FA7A7271132
+        95B64475E5D7AF5FA6D290A8AEACAFC19E3F656739FBFAFAAAE6E18E070543B9
+        21306BB6F66F6F6FD2A16AE2F684E4F7EFDF4AD41D5440A2C7D7EC83E923C443
+        60EE2B566D8A12A5465BADC21D890A24AA2BABB5F63F7FFE544D57DFA34D2ACA
+        A3D3808CA8DC1F3F7E08C948A2946A5DD25FF13B9FCF3A06004A2F641D2AFA6E
+        D2D62C953B44F55E193D92A8D74F518EAB3E891F2A4B4FB5328A8C368D042CA9
+        4CE7EB3B31E0C854AAB54A3CA4BA97E965DD404585A5D0094AC6D63518EAA82F
+        FD3B856499E1C80D5454A6F459D1F95391C954A8D4856ED501BD1A1A52552C1D
+        E80C577506BD41FF87C7F50ADD134558FFC6A528CE3ACF6FCE31501F52CBFA9E
+        7674C3299741B575B91FA9AF94B62DB258DA162A686125067EBA5F37731C8594
+        A2A79342C5B15EC1EFC4CDE87118F052BDA22813133630FAD9EAB043DF13E5A9
+        152A54F33C76A55A90EFE497CAB548C40D4A03B946A6E759A3B881A2271EA15B
+        4425B4040388ACC7F519BC42F71497261CAF54C7612A1C51B3DB6A572E369BFA
+        EE7E0F2D6BAA974FE18640A54738C94828B4447E3017053DA8F33BE868CC4B45
+        598C72A3B80515E5B274426E240140C562F0A51BD08DBA99DE0455216A467E91
+        7E9CFEA86E586664B0612A4CC050F7A3A5A14D56DEE5D908C6629CD123A844B4
+        B9EEA73B10D5450745CBC1906DB109F36D53199FC9D8D3C4CC4EA8500FD4543A
+        2B1BA26231155339A44821D38BC93D7853595918F932BDB4E252ACA9D4455DF3
+        1587FAA65297859784AFA5B24B6B8A2B451DFD1597BCBA4359535C8F24E62F1A
+        A2B24B6B8AEB9B9398D35B7168DCAE35051F3024E34B2F798DAEBF04C9520A2B
+        0E4A2CF375DDD7C2D735B6194B53D9873585F25A591C6B394C6C7349E7550948
+        9D6E5093AEFA9197FB5A1C45DE644D9197B3AE7AD9E77CF0626963961A5D54A8
+        2326A79B5DC259D49A427971FD20E0110DD6FD3B999D1720A2CD6867E5718CCA
+        B8354597EC1C28EF286E6E500A5930566A5978EFBED62EC9444AA514452C9CC4
+        553D3887FDAE30E4D6A278453BE62C17A88C5B53B0E20B03A84461D449EC5418
+        79090C93166141112332418DA57EE50BAFD3C939D6B862593A964D23754D99B3
+        8C51B9684DD15FCD8D7E41CC20E58A556D72F2523F571918CD64CB12C6C18CBD
+        024353E62C0FCDB8F45579184E74693DBF5F54AB14A3DBBAAEE1E8E6A9849D83
+        F29A036528E6B9D59AA1BA85C6C8F6630C9B6951B82A542DB7BAAD53093B8768
+        24197F4145D95DD48C30BEC2BA25B44AB69509133D63B8938AC5544CC5622A16
+        5331158BA9988AC5542CA6622A165331158BA9988AC5542CA6622A165331158B
+        A9988AC5542CA6622A13CA417C68B744E5383EB49BA172281FDACDA4B0F188E4
+        47A4B2CB88E49BA7B2271FDA9D5069CA87D654FE93857D68719FC4B7A6A1DD0B
+        1AD45D8BF9D00212E750BDD4F1C1EAB2B00F6DC42227C2EF8AD17BB7DD9F99D6
+        87361AB075916C9ECAB43EB4BA3FF6BB586CBBBB26A8507EA7EA444DEB43CBD6
+        1611BBFC28752592DDE0663BC7ED19B3E599A9DC40858D07AE892ED41FD68DEF
+        CC540CD64CE55A2AECDA177BC5D1EB9F301451DEF2CC546ED360117C4EE57ADA
+        658C08A0165454E1AA6C4E0DCB3A546294DB0F3EF78806A32DB923F29AEBCAFF
+        51B338EE079F9B75E86719A4C2AE4339E3A2533F6DE7384F6459C6A810DA2CC6
+        626CFB3847DEA91632EE3BF2666A3B9F713195D584CE85A93424AC7A4D3B7832
+        9547451D10D6EA0FD56D6B9ACADBDB1BC32653694530CB3BE6244DBB54345A0A
+        7B0651693954F751A8F483E41F6A0FDC46A968189B0D7F8A85F4587488C908F6
+        F260C9FD7C3E4BEF6189C158352FE0EB1286486CC1C20DE3364A3345F2DF1815
+        0160FD3C3730315BCA86E03A49AE75FFDA1FE9415625303BE264DEB25D2709A2
+        8C857F376CA3347724FF2D5161823987B5C7F02EF29D6566E55D94DF6C7F542C
+        19D059D00D344B615B44F5CA269343364A3345F2DFE18C8BB25518227FA38796
+        35559814619907AA3C031BA8BA011BA51523F96F8F0A36416818F29A96002D14
+        C51F00B1C1970EC42074A38EF5388B6FDDA88DD22A91FC374625266054B4C3D2
+        95C69F7C8CE28F4911E4448203A6C6B122BBD246699548FEBB9AF5CB16C3EE19
+        B7D2D850394CC5622AA66231158BA9988AC5544CC5622AA66231158BA9988AC5
+        544CC5622AA66231158BA9988AC5544CC5622AA6623195A5E5E3E36331870782
+        C7B74E052BFABE89705574E7D00DB8495433B7FAD488C358FE9E7CBEF8D4EABB
+        885099CDF8FBCE691BA012BE3CDD5754836A38122CB547FCEDF0C5EA5B6A0F3D
+        35943B385A7009A7A4F89EFCA9BC2EFF02C5E27C3E173F3B6D00FF1534D850AC
+        7B7CB7F06DA852211A5F7175FCA9212AAA0A854B5FF62ECB0C32EC70681A4AD4
+        F454E68E7048AAF0B01A8FDB53CD5F2AC408B39BA8F4B559F5CB89CE155E4552
+        5CE1CAB40495B9231C66CD1BEE8A375109D7BA9BA8A84EA0DC0A4F142533C2EF
+        13BDB89AA7E74FC9DF807EC3B52576BAE8BEFC5D2262FF83DD8A85221CE6D2D7
+        57D617F337BB0B7135DCB4C6A9E432A1CC0AE5133E60B82349FA1A0CC7B05C33
+        F051A6701049B3EA06866BE72371BC96887038AEAC2F5261C782BEDC44A5FB0A
+        405DBDA4CC2DD2AB3CED7B795DA9F7C8C947FCF6568870D84FDE35BAE8E2D58B
+        54D03CD58E5FA1AE95F67093D4D5F8D9EC601E1DB9EABB74E73454668D709831
+        50C4F2DE43456E0EF573C6AFF6CFEB679535F1A2BEBA57EA04A0881A18DD8AF8
+        91FCE5D19FC64333464894099E1A8AA49D83379109F9B84265EE0887F42362C7
+        86F8E2828AD2C6F08DDBFAA342DAA4426B0F3DA59746E3517485A38AF4471ED1
+        3B181A7BD2D4173F482314DF507506BF998AC5F360165331158BA9EC56FE0271
+        2A60FF9847BC760000000049454E44AE426082
+      }
+      Transparent = True
+    end
+  end
+  object Bevel1: TBevel
+    AnchorSideLeft.Control = Panel2
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideTop.Control = BtnExec
+    AnchorSideBottom.Control = BtnExec
+    AnchorSideBottom.Side = asrBottom
+    Left = 293
+    Height = 25
+    Top = 263
+    Width = 8
+    Anchors = [akTop, akLeft, akBottom]
+    Shape = bsSpacer
+  end
+end
